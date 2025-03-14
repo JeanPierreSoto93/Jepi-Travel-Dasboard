@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import BusinessTypeForm from "@/components/business-type-form";
+import OnboardingForm from "@/components/onboarding-form";
 
 export default function AuthPage() {
   const { user } = useAuth();
@@ -43,7 +44,7 @@ export default function AuthPage() {
                 <TabsTrigger value="login">Iniciar Sesión</TabsTrigger>
               </TabsList>
               <TabsContent value="register">
-                <BusinessTypeForm mode="register" />
+                <OnboardingForm />
               </TabsContent>
               <TabsContent value="login">
                 <BusinessTypeForm mode="login" />
