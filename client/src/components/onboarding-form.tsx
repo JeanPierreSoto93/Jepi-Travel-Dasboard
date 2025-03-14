@@ -23,6 +23,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/hooks/use-toast";
+import { z } from "zod";
 
 type Step = {
   title: string;
@@ -43,6 +44,30 @@ const steps: Step[] = [
     description: "Configura tus servicios",
   },
 ];
+
+const stepSchemas = {
+  0: z.object({
+    username: z.string().min(3, "El usuario debe tener al menos 3 caracteres"),
+    password: z.string().min(8, "La contraseña debe tener al menos 8 caracteres"),
+  }),
+  1: z.object({
+    businessName: z.string().min(2, "El nombre del negocio es requerido"),
+    businessType: z.enum([BusinessType.HOTEL, BusinessType.TRAVEL_AGENCY, BusinessType.HYBRID], {
+      required_error: "Selecciona el tipo de negocio",
+    }),
+    email: z.string().email("Ingresa un correo electrónico válido"),
+    phone: z.string().min(10, "Ingresa un número de teléfono válido"),
+  }),
+  2: z.object({
+    settings: z.object({
+      sellsHotels: z.boolean(),
+      sellsTours: z.boolean(),
+      sellsPackages: z.boolean(),
+    }).refine((data) => data.sellsHotels || data.sellsTours || data.sellsPackages, {
+      message: "Debes seleccionar al menos un servicio",
+    }),
+  }),
+};
 
 export default function OnboardingForm() {
   const [step, setStep] = useState(0);
@@ -71,12 +96,32 @@ export default function OnboardingForm() {
     const isValid = await form.trigger(fieldsToValidate);
 
     if (!isValid) {
+      const errors = form.formState.errors;
+      const errorMessages = Object.values(errors)
+        .map(error => error.message)
+        .join(", ");
+
       toast({
-        title: "Por favor completa todos los campos requeridos",
+        title: "Por favor corrige los siguientes errores:",
+        description: errorMessages,
         variant: "destructive",
       });
       return false;
     }
+
+    // Validación adicional para el paso de servicios
+    if (step === 2) {
+      const settings = form.getValues("settings");
+      if (!settings.sellsHotels && !settings.sellsTours && !settings.sellsPackages) {
+        toast({
+          title: "Selección de servicios requerida",
+          description: "Debes seleccionar al menos un servicio para continuar",
+          variant: "destructive",
+        });
+        return false;
+      }
+    }
+
     return true;
   };
 
@@ -93,6 +138,10 @@ export default function OnboardingForm() {
         await onNext();
         return;
       }
+
+      const isValid = await validateStep();
+      if (!isValid) return;
+
       await registerMutation.mutateAsync(data);
     } catch (error) {
       console.error("Error en el formulario:", error);
