@@ -5,36 +5,36 @@ import { Link } from "wouter";
 
 const plans = [
   {
-    name: "Starter",
+    name: "Básico",
     price: "49",
     features: [
-      "Up to 100 bookings/month",
-      "Basic reporting",
-      "Email support",
-      "Hotel OR tour management",
+      "Hasta 100 reservas/mes",
+      "Reportes básicos",
+      "Soporte por email",
+      "Gestión de hotel O tours",
     ],
   },
   {
-    name: "Professional",
+    name: "Profesional",
     price: "99",
     features: [
-      "Unlimited bookings",
-      "Advanced analytics",
-      "Priority support",
-      "Hotel AND tour management",
-      "Package builder",
-      "API access",
+      "Reservas ilimitadas",
+      "Análisis avanzado",
+      "Soporte prioritario",
+      "Gestión de hoteles Y tours",
+      "Creador de paquetes",
+      "Acceso API",
     ],
   },
   {
-    name: "Enterprise",
-    price: "Custom",
+    name: "Empresarial",
+    price: "Personalizado",
     features: [
-      "Everything in Professional",
-      "Custom development",
-      "Dedicated account manager",
-      "SLA guarantee",
-      "White-label solution",
+      "Todo en Profesional",
+      "Desarrollo personalizado",
+      "Gerente de cuenta dedicado",
+      "Garantía de servicio",
+      "Solución marca blanca",
     ],
   },
 ];
@@ -44,7 +44,7 @@ export default function PricingSection() {
     <div className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-16">
-          Choose the right plan for your business
+          Elige el plan perfecto para tu negocio
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
           {plans.map((plan) => (
@@ -55,8 +55,8 @@ export default function PricingSection() {
                   <span className="text-4xl font-bold">
                     ${plan.price}
                   </span>
-                  {plan.price !== "Custom" && (
-                    <span className="text-muted-foreground">/month</span>
+                  {plan.price !== "Personalizado" && (
+                    <span className="text-muted-foreground">/mes</span>
                   )}
                 </div>
               </CardHeader>
@@ -70,7 +70,7 @@ export default function PricingSection() {
                   ))}
                 </ul>
                 <Link href="/auth">
-                  <Button className="w-full">Get Started</Button>
+                  <Button className="w-full">Comenzar</Button>
                 </Link>
               </CardContent>
             </Card>

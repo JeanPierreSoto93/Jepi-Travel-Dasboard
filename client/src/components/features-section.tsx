@@ -10,39 +10,39 @@ import {
 const features = [
   {
     icon: Building2,
-    title: "Hotel Management",
+    title: "Gestión Hotelera",
     description:
-      "Manage your hotel inventory, room types, and pricing with our intuitive interface.",
+      "Administra tu inventario de hotel, tipos de habitaciones y precios con nuestra interfaz intuitiva.",
   },
   {
     icon: Map,
-    title: "Tour Operations",
+    title: "Operación de Tours",
     description:
-      "Create and manage tours, set schedules, and handle bookings efficiently.",
+      "Crea y gestiona tours, establece horarios y maneja reservas eficientemente.",
   },
   {
     icon: Package,
-    title: "Package Builder",
+    title: "Creador de Paquetes",
     description:
-      "Build custom travel packages combining hotels, tours, and activities.",
+      "Construye paquetes turísticos personalizados combinando hoteles, tours y actividades.",
   },
   {
     icon: Calendar,
-    title: "Smart Booking",
+    title: "Reservas Inteligentes",
     description:
-      "Real-time availability and instant confirmation for all your services.",
+      "Disponibilidad en tiempo real y confirmación instantánea para todos tus servicios.",
   },
   {
     icon: CreditCard,
-    title: "Secure Payments",
+    title: "Pagos Seguros",
     description:
-      "Accept payments securely with our integrated payment processing system.",
+      "Acepta pagos de forma segura con nuestro sistema de procesamiento integrado.",
   },
   {
     icon: BarChart3,
-    title: "Analytics",
+    title: "Análisis",
     description:
-      "Get detailed insights into your business performance and booking trends.",
+      "Obtén información detallada sobre el rendimiento de tu negocio y tendencias de reservas.",
   },
 ];
 
@@ -51,7 +51,7 @@ export default function FeaturesSection() {
     <div className="py-24 bg-muted">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-16">
-          Everything you need to run your travel business
+          Todo lo que necesitas para administrar tu negocio turístico
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature) => (

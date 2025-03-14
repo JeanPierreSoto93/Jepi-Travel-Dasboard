@@ -9,18 +9,18 @@ export default function HeroSection() {
           <div>
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">
-                Transform
+                Transforma
               </span>{" "}
-              your travel business
+              tu negocio turístico
             </h1>
             <p className="mt-6 text-xl text-muted-foreground">
-              The complete booking system for hotels and travel agencies. Manage
-              rooms, tours, and create custom packages all in one place.
+              El sistema de reservas completo para hoteles y agencias de viajes. 
+              Gestiona habitaciones, tours y crea paquetes personalizados en un solo lugar.
             </p>
             <div className="mt-8">
               <Link href="/auth">
                 <Button size="lg" className="text-lg px-8">
-                  Start Your Free Trial
+                  Prueba Gratis
                 </Button>
               </Link>
             </div>
@@ -28,7 +28,7 @@ export default function HeroSection() {
           <div className="relative">
             <img
               src="https://images.unsplash.com/photo-1445991842772-097fea258e7b"
-              alt="Luxury Hotel Room"
+              alt="Habitación de Hotel de Lujo"
               className="rounded-lg shadow-2xl"
             />
           </div>

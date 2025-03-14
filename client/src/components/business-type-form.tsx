@@ -58,7 +58,7 @@ export default function BusinessTypeForm({ mode }: BusinessTypeFormProps) {
           name="username"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>Usuario</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
@@ -72,7 +72,7 @@ export default function BusinessTypeForm({ mode }: BusinessTypeFormProps) {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel>Contraseña</FormLabel>
               <FormControl>
                 <Input type="password" {...field} />
               </FormControl>
@@ -88,7 +88,7 @@ export default function BusinessTypeForm({ mode }: BusinessTypeFormProps) {
               name="businessName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Business Name</FormLabel>
+                  <FormLabel>Nombre del Negocio</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
@@ -102,23 +102,23 @@ export default function BusinessTypeForm({ mode }: BusinessTypeFormProps) {
               name="businessType"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Business Type</FormLabel>
+                  <FormLabel>Tipo de Negocio</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select business type" />
+                        <SelectValue placeholder="Selecciona el tipo de negocio" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
                       <SelectItem value={BusinessType.HOTEL}>Hotel</SelectItem>
                       <SelectItem value={BusinessType.TRAVEL_AGENCY}>
-                        Travel Agency
+                        Agencia de Viajes
                       </SelectItem>
                       <SelectItem value={BusinessType.HYBRID}>
-                        Hybrid (Both)
+                        Híbrido (Ambos)
                       </SelectItem>
                     </SelectContent>
                   </Select>
@@ -132,7 +132,7 @@ export default function BusinessTypeForm({ mode }: BusinessTypeFormProps) {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>Correo Electrónico</FormLabel>
                   <FormControl>
                     <Input type="email" {...field} />
                   </FormControl>
@@ -146,7 +146,7 @@ export default function BusinessTypeForm({ mode }: BusinessTypeFormProps) {
               name="phone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Phone</FormLabel>
+                  <FormLabel>Teléfono</FormLabel>
                   <FormControl>
                     <Input type="tel" {...field} />
                   </FormControl>
@@ -167,7 +167,7 @@ export default function BusinessTypeForm({ mode }: BusinessTypeFormProps) {
                         onCheckedChange={field.onChange}
                       />
                     </FormControl>
-                    <FormLabel className="!mt-0">Sell Hotels</FormLabel>
+                    <FormLabel className="!mt-0">Vender Hoteles</FormLabel>
                   </FormItem>
                 )}
               />
@@ -183,7 +183,7 @@ export default function BusinessTypeForm({ mode }: BusinessTypeFormProps) {
                         onCheckedChange={field.onChange}
                       />
                     </FormControl>
-                    <FormLabel className="!mt-0">Sell Tours</FormLabel>
+                    <FormLabel className="!mt-0">Vender Tours</FormLabel>
                   </FormItem>
                 )}
               />
@@ -199,7 +199,7 @@ export default function BusinessTypeForm({ mode }: BusinessTypeFormProps) {
                         onCheckedChange={field.onChange}
                       />
                     </FormControl>
-                    <FormLabel className="!mt-0">Sell Packages</FormLabel>
+                    <FormLabel className="!mt-0">Vender Paquetes</FormLabel>
                   </FormItem>
                 )}
               />
@@ -212,7 +212,7 @@ export default function BusinessTypeForm({ mode }: BusinessTypeFormProps) {
           className="w-full"
           disabled={loginMutation.isPending || registerMutation.isPending}
         >
-          {mode === "login" ? "Login" : "Register"}
+          {mode === "login" ? "Iniciar Sesión" : "Registrarse"}
         </Button>
       </form>
     </Form>

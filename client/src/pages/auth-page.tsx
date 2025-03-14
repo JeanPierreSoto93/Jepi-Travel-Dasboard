@@ -26,16 +26,16 @@ export default function AuthPage() {
       <div className="flex items-center justify-center p-8">
         <Card className="w-full max-w-lg">
           <CardHeader>
-            <CardTitle>Welcome to TravelTech</CardTitle>
+            <CardTitle>Bienvenido a JepiTravel</CardTitle>
             <CardDescription>
-              Manage your travel business efficiently with our platform
+              Gestiona tu negocio turístico eficientemente con nuestra plataforma
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Tabs defaultValue="register">
               <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="register">Register</TabsTrigger>
-                <TabsTrigger value="login">Login</TabsTrigger>
+                <TabsTrigger value="register">Registrarse</TabsTrigger>
+                <TabsTrigger value="login">Iniciar Sesión</TabsTrigger>
               </TabsList>
               <TabsContent value="register">
                 <BusinessTypeForm mode="register" />

@@ -36,7 +36,7 @@ export default function DashboardPage() {
                 collapsed ? "text-sm" : "text-xl"
               )}
             >
-              {collapsed ? "TT" : "TravelTech"}
+              {collapsed ? "JT" : "JepiTravel"}
             </h1>
             <Button
               variant="ghost"
@@ -55,7 +55,7 @@ export default function DashboardPage() {
                 size={collapsed ? "icon" : "default"}
               >
                 <Hotel className="h-4 w-4" />
-                {!collapsed && <span className="ml-2">Hotels</span>}
+                {!collapsed && <span className="ml-2">Hoteles</span>}
               </Button>
             )}
 
@@ -77,7 +77,7 @@ export default function DashboardPage() {
                 size={collapsed ? "icon" : "default"}
               >
                 <Package className="h-4 w-4" />
-                {!collapsed && <span className="ml-2">Packages</span>}
+                {!collapsed && <span className="ml-2">Paquetes</span>}
               </Button>
             )}
 
@@ -88,7 +88,7 @@ export default function DashboardPage() {
               onClick={handleLogout}
             >
               <LogOut className="h-4 w-4" />
-              {!collapsed && <span className="ml-2">Logout</span>}
+              {!collapsed && <span className="ml-2">Cerrar Sesión</span>}
             </Button>
           </nav>
         </div>
@@ -100,18 +100,18 @@ export default function DashboardPage() {
         <div className="h-screen p-8">
           <div className="mb-8">
             <h2 className="text-2xl font-bold mb-2">
-              Welcome, {user?.businessName}
+              Bienvenido, {user?.businessName}
             </h2>
             <p className="text-muted-foreground">
-              Manage your {user?.businessType} business here
+              Administra tu negocio de {user?.businessType === 'hotel' ? 'hotel' : 
+                user?.businessType === 'travel_agency' ? 'agencia de viajes' : 'hotel y agencia'} aquí
             </p>
           </div>
 
-          {/* Dashboard content will be added here as the app grows */}
           <div className="grid md:grid-cols-3 gap-8">
             <div className="col-span-3 p-8 rounded-lg border bg-card text-center">
               <p className="text-lg">
-                Your dashboard is ready! Start by adding your inventory.
+                ¡Tu panel está listo! Comienza agregando tu inventario.
               </p>
             </div>
           </div>
