@@ -55,16 +55,31 @@ export default function OnboardingForm() {
         sellsPackages: false,
       },
     },
+    mode: "onChange", // Validar al cambiar
   });
 
   const progress = ((step + 1) / steps.length) * 100;
 
   const onSubmit = async (data: InsertUser) => {
-    if (step < steps.length - 1) {
-      setStep(step + 1);
-      return;
+    try {
+      if (step < steps.length - 1) {
+        // Validar campos del paso actual antes de avanzar
+        const fieldsToValidate = step === 0 
+          ? ["username", "password"]
+          : step === 1 
+          ? ["businessName", "businessType", "email", "phone"]
+          : ["settings"];
+
+        const result = await form.trigger(fieldsToValidate as any);
+        if (result) {
+          setStep(step + 1);
+        }
+        return;
+      }
+      await registerMutation.mutateAsync(data);
+    } catch (error) {
+      console.error("Error en el formulario:", error);
     }
-    await registerMutation.mutateAsync(data);
   };
 
   return (
