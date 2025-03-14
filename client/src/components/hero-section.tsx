@@ -19,7 +19,7 @@ export default function HeroSection() {
             </p>
             <div className="mt-8">
               <Link href="/auth">
-                <Button size="lg" className="text-lg px-8 bg-primary hover:bg-primary/90">
+                <Button size="lg" className="text-lg px-8 bg-primary hover:bg-primary/90 text-white">
                   Prueba Gratis
                 </Button>
               </Link>
