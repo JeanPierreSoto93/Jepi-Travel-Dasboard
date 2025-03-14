@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
+import { useToast } from "@/hooks/use-toast";
 
 type Step = {
   title: string;
@@ -46,8 +47,10 @@ const steps: Step[] = [
 export default function OnboardingForm() {
   const [step, setStep] = useState(0);
   const { registerMutation } = useAuth();
+  const { toast } = useToast();
+
   const form = useForm<InsertUser>({
-    resolver: zodResolver(insertUserSchema),
+    resolver: zodResolver(insertUserSchema.partial()),
     defaultValues: {
       settings: {
         sellsHotels: false,
@@ -55,30 +58,49 @@ export default function OnboardingForm() {
         sellsPackages: false,
       },
     },
-    mode: "onChange", // Validar al cambiar
   });
 
   const progress = ((step + 1) / steps.length) * 100;
 
+  const validateStep = async () => {
+    const fieldsToValidate = 
+      step === 0 ? ["username", "password"] :
+      step === 1 ? ["businessName", "businessType", "email", "phone"] :
+      ["settings"];
+
+    const isValid = await form.trigger(fieldsToValidate);
+
+    if (!isValid) {
+      toast({
+        title: "Por favor completa todos los campos requeridos",
+        variant: "destructive",
+      });
+      return false;
+    }
+    return true;
+  };
+
+  const onNext = async () => {
+    const isValid = await validateStep();
+    if (isValid) {
+      setStep(step + 1);
+    }
+  };
+
   const onSubmit = async (data: InsertUser) => {
     try {
       if (step < steps.length - 1) {
-        // Validar campos del paso actual antes de avanzar
-        const fieldsToValidate = step === 0 
-          ? ["username", "password"]
-          : step === 1 
-          ? ["businessName", "businessType", "email", "phone"]
-          : ["settings"];
-
-        const result = await form.trigger(fieldsToValidate as any);
-        if (result) {
-          setStep(step + 1);
-        }
+        await onNext();
         return;
       }
       await registerMutation.mutateAsync(data);
     } catch (error) {
       console.error("Error en el formulario:", error);
+      toast({
+        title: "Error al registrar",
+        description: "Por favor verifica los datos e intenta nuevamente",
+        variant: "destructive",
+      });
     }
   };
 
