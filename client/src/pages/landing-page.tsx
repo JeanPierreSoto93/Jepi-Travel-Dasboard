@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { useAuth } from "@/hooks/use-auth";
 import HeroSection from "@/components/hero-section";
 import FeaturesSection from "@/components/features-section";
-import PricingSection from "@/components/pricing-section";
+import ContactSection from "@/components/contact-section";
 import { Twitter, Linkedin, Facebook } from "lucide-react";
 
 export default function LandingPage() {
@@ -17,6 +17,14 @@ export default function LandingPage() {
             <span className="text-primary">Jepi</span>Travel
           </h1>
           <div className="flex items-center gap-4">
+            <a 
+              href="https://jepi-travel-booking-engine.replit.app/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary"
+            >
+              Ver Demo
+            </a>
             {user ? (
               <Link href="/dashboard">
                 <Button variant="secondary">Panel de Control</Button>
@@ -33,7 +41,7 @@ export default function LandingPage() {
       <main className="flex-grow">
         <HeroSection />
         <FeaturesSection />
-        <PricingSection />
+        <ContactSection />
       </main>
 
       <footer className="bg-muted py-16 border-t">
@@ -49,7 +57,7 @@ export default function LandingPage() {
               <h4 className="font-semibold mb-4">Producto</h4>
               <ul className="space-y-2 text-muted-foreground">
                 <li>Características</li>
-                <li>Precios</li>
+                <li>Demo</li>
                 <li>Seguridad</li>
                 <li>Actualizaciones</li>
               </ul>
