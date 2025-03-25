@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
 
 export default function HeroSection() {
   return (
@@ -18,18 +17,22 @@ export default function HeroSection() {
               Gestiona habitaciones, tours y crea paquetes personalizados en un solo lugar.
             </p>
             <div className="mt-8">
-              <Link href="/auth">
+              <a 
+                href="https://jepi-travel-booking-engine.replit.app/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
                 <Button size="lg" className="text-lg px-8 bg-primary hover:bg-primary/90 text-white">
-                  Prueba Gratis
+                  Ver Demo
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-lg" />
             <img
-              src="https://images.unsplash.com/photo-1445991842772-097fea258e7b"
-              alt="Habitación de Hotel de Lujo"
+              src="https://images.unsplash.com/photo-1551029506-0807df4e2031"
+              alt="Sistema de Reservas en Acción"
               className="rounded-lg shadow-2xl relative"
             />
           </div>

@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
 import { useAuth } from "@/hooks/use-auth";
 import HeroSection from "@/components/hero-section";
 import FeaturesSection from "@/components/features-section";
@@ -25,14 +24,10 @@ export default function LandingPage() {
             >
               Ver Demo
             </a>
-            {user ? (
-              <Link href="/dashboard">
+            {user && (
+              <a href="/dashboard">
                 <Button variant="secondary">Panel de Control</Button>
-              </Link>
-            ) : (
-              <Link href="/auth">
-                <Button>Empezar Ahora</Button>
-              </Link>
+              </a>
             )}
           </div>
         </div>
